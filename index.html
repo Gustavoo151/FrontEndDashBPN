@@ -6,151 +6,156 @@
     <title>Dashboard com Bootstrap</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Barra de Seleção Lateral -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Geral
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                10k
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Rural
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Indígenas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Quilombolas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Mães Analfabetas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Menores que 15 Anos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Bolsa Família
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Por Cidade
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Barra de Seleção Lateral -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Geral
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            10k
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Rural
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Indígenas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Quilombolas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Mães Analfabetas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Menores que 15 Anos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Bolsa Família
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Por Cidade
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-            <!-- Conteúdo Principal -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div class="row mt-4">
-                    <!-- Campos de dados principais -->
-                    <div class="col-md-3">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-header">
-                                <h5 class="my-0 font-weight-normal">Total de Exemplos</h5>
-                            </div>
-                            <div class="card-body">
-                                <h4 id="total-exemplos">0</h4>
-                            </div>
+        <!-- Conteúdo Principal -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <div class="row mt-4">
+                <!-- Campos de dados principais -->
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Total de Exemplos</h5>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-header">
-                                <h5 class="my-0 font-weight-normal">Com Baixo Peso</h5>
-                            </div>
-                            <div class="card-body">
-                                <h4 id="com-baixo-peso">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-header">
-                                <h5 class="my-0 font-weight-normal">Sem Baixo Peso</h5>
-                            </div>
-                            <div class="card-body">
-                                <h4 id="sem-baixo-peso">0</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-header">
-                                <h5 class="my-0 font-weight-normal">Risco de Baixo Peso</h5>
-                            </div>
-                            <div class="card-body">
-                                <h4 id="risco-baixo-peso">0</h4>
-                            </div>
+                        <div class="card-body">
+                            <h4 id="total-exemplos">0</h4>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <!-- Tabela de Subgrupos -->
-                    <div class="col-md-12">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-header">
-                                <h4 class="my-0 font-weight-normal">Subgrupos</h4>
-                            </div>
-                            <div class="card-body">
-                                <!-- Campo de busca por cidade -->
-                                <div id="city-search" style="display: none;">
-                                    <div class="input-group mb-3">
-                                        <input type="text" id="inputCity" class="form-control" placeholder="Buscar por cidade">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary" type="button" id="btnSearch">Buscar</button>
-                                        </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Com Baixo Peso</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 id="com-baixo-peso">0</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Sem Baixo Peso</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 id="sem-baixo-peso">0</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Risco de Baixo Peso</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 id="risco-baixo-peso">0</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Tabela de Subgrupos -->
+                <div class="col-md-12">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Subgrupos</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Campo de busca por cidade -->
+                            <div id="city-search" style="display: none;">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="city-search-input" class="form-control" placeholder="Buscar por cidade">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary" type="button" id="btnSearch">Buscar</button>
                                     </div>
                                 </div>
-                                <!-- Tabela de subgrupos -->
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">TP</th>
-                                            <th scope="col">FP</th>
-                                            <th scope="col">Lift</th>
-                                            <th scope="col">Supp</th>
-                                            <th scope="col">Sup_p</th>
-                                            <th scope="col">Conf</th>
-                                            <th scope="col">D</th>
-                                            <th scope="col">Dp</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="subgrupos-body">
-                                        <!-- Aqui serão inseridos os dados da API -->
-                                    </tbody>
-                                </table>
                             </div>
+                            <!-- Tabela de subgrupos -->
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">nome_cidade</th>
+                                    <th scope="col">descr</th>
+                                    <th scope="col">tp</th>
+                                    <th scope="col">fp</th>
+                                    <th scope="col">lift</th>
+                                    <th scope="col">supp</th>
+                                    <th scope="col">sup_p</th>
+                                    <th scope="col">conf</th>
+                                    <th scope="col">d</th>
+                                    <th scope="col">dp</th>
+                                </tr>
+                                </thead>
+                                <tbody id="subgrupos-body">
+                                <!-- Aqui serão inseridos os dados da API -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/script.js"></script>
-</body
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

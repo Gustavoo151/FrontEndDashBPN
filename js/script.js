@@ -1,15 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sidebarLinks = document.querySelectorAll('.nav-link');
 
+    // Obtém uma referência ao botão de busca
+    const searchButton = document.getElementById('btnSearch');
+
+    // Adiciona um ouvinte de evento de clique ao botão de busca
+    searchButton.addEventListener('click', function() {
+        // Executa a busca quando o botão de busca é clicado
+        loadSectionData('Por Cidade');
+    });
+
     // Itera sobre os links da barra lateral para adicionar os eventos
     sidebarLinks.forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
             const section = this.textContent.trim(); // Obtém o texto do link clicado
-            
+
             // Remove a classe 'active' de todos os links
             sidebarLinks.forEach(link => link.classList.remove('active'));
-            
+
             // Adiciona a classe 'active' ao link clicado
             this.classList.add('active');
 
@@ -28,6 +37,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (section === 'Por Cidade') {
                 // Mostra o campo de busca por cidade
                 showCitySearch();
+
+                // Obtém o valor do campo de busca por cidade
+                const citySearchValue = document.getElementById('city-search-input').value.trim();
+
+                // Verifica se foi digitado algo no campo de busca
+                if (citySearchValue) {
+                    // Carrega dados da seção 'Por Cidade' usando o valor do campo de busca por cidade
+                    const data = await fetchFakeData(section, citySearchValue);
+                    displayData(data);
+                } else {
+                    // Caso não haja valor digitado, exibe uma mensagem
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td colspan="10">Digite uma cidade para buscar.</td>`;
+                    subgruposBody.appendChild(row);
+                }
             } else {
                 // Esconde o campo de busca por cidade
                 hideCitySearch();
@@ -63,48 +87,49 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (section) {
             case 'Geral':
                 return [
-                    { nome: 'Subgrupo A', quantidade: 100 },
-                    { nome: 'Subgrupo B', quantidade: 150 }
+                    { Base: 'Subgrupo A', quantidade: 100, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo B', quantidade: 150, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
             case '10k':
                 return [
-                    { nome: 'Subgrupo C', quantidade: 80 },
-                    { nome: 'Subgrupo D', quantidade: 120 }
+                    { Base: 'Subgrupo C', quantidade: 80, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo D', quantidade: 120, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
             case 'Rural':
                 return [
-                    { nome: 'Subgrupo E', quantidade: 50 },
-                    { nome: 'Subgrupo F', quantidade: 70 }
+                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
-
             case 'Indígenas':
                 return [
-                    { nome: 'Subgrupo H', quantidade: 50 },
-                    { nome: 'Subgrupo w', quantidade: 70 }
+                    { Base: 'Subgrupo H', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo W', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
             case 'Quilombolas':
                 return [
-                    { nome: 'Subgrupo E', quantidade: 50 },
-                    { nome: 'Subgrupo F', quantidade: 70 }
+                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
             case 'Mães Analfabetas':
                 return [
-                    { nome: 'Subgrupo E', quantidade: 50 },
-                    { nome: 'Subgrupo F', quantidade: 70 }
+                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
             case 'Menores que 15 Anos':
                 return [
-                    { nome: 'Subgrupo E', quantidade: 50 },
-                    { nome: 'Subgrupo F', quantidade: 70 }
+                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
                 ];
             case 'Bolsa Família':
                 return [
-                    { nome: 'Subgrupo E', quantidade: 50 },
-                    { nome: 'Subgrupo F', quantidade: 70 }
-                ];    
+                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
+                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
+                ];
             case 'Por Cidade':
-                const response = await fetch(`https://baixopeso.onrender.com/api/subgroups/by-nome-cidade/?city=${citySearchValue}`);
-                return await response.json();
+                const url = `https://baixopeso.onrender.com/api/subgroups/by-nome-cidade/${encodeURIComponent(citySearchValue)}`;
+                const response = await fetch(url);
+                const data = await response.json();
+                return data;
             default:
                 return [];
         }
@@ -119,47 +144,23 @@ document.addEventListener('DOMContentLoaded', function() {
             data.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                <td>${item.Base}</td>
-                <td>${item.quantidade}</td>
-                <td>${item.TP}</td>
-                <td>${item.FP}</td>
-                <td>${item.lift}</td>
-                <td>${item.supp}</td>
-                <td>${item.sup_p}</td>
-                <td>${item.conf}</td>
-                <td>${item.D}</td>
-                <td>${item.Dp}</td>
-            `;
+                    <td>${item.nome_cidade}</td>
+                    <td>${item.descr}</td>
+                    <td>${item.tp}</td>
+                    <td>${item.fp}</td>
+                    <td>${item.lift}</td>
+                    <td>${item.supp}</td>
+                    <td>${item.sup_p}</td>
+                    <td>${item.conf}</td>
+                    <td>${item.d}</td>
+                    <td>${item.dp}</td>
+                `;
                 subgruposBody.appendChild(row);
             });
         } else {
             const row = document.createElement('tr');
             row.innerHTML = `<td colspan="10">Nenhum resultado encontrado.</td>`;
             subgruposBody.appendChild(row);
-        }
-    }
-
-    async function loadSectionData(section) {
-        try {
-            // Limpa o conteúdo da seção de subgrupos
-            const subgruposBody = document.getElementById('subgrupos-body');
-            subgruposBody.innerHTML = '';
-
-            if (section === 'Por Cidade') {
-                // Mostra o campo de busca por cidade
-                showCitySearch();
-
-                // Obtém o valor do campo de busca por cidade
-                const citySearchValue = document.getElementById('city-search-input').value;
-
-                // Carrega dados da seção 'Por Cidade' usando o valor do campo de busca por cidade
-                const data = await fetchFakeData(section, citySearchValue);
-                displayData(data);
-            } else {
-                // ... restante do código ...
-            }
-        } catch (error) {
-            console.error('Erro ao carregar dados da seção:', error);
         }
     }
 });
