@@ -8,16 +8,19 @@ body {
 .sidebar {
     height: 100vh;
     position: fixed;
-    background-color: #1b3b6f; /* Azul marinho */
+    background-color: #1b3b6f; /* Azul escuro */
     color: white;
+    padding-top: 20px;
 }
 
-.sidebar a {
-    color: white;
+.sidebar .nav-link {
+    color: white; /* Cor das letras em branco */
 }
 
-.sidebar a.active {
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
     background-color: #3b5998; /* Azul claro */
+    color: white;
 }
 
 .card {
@@ -27,7 +30,7 @@ body {
 }
 
 .card-header {
-    background-color: #1b3b6f; /* Azul marinho */
+    background-color: #1b3b6f; /* Azul escuro */
     color: white;
 }
 
