@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    background-color: #1b3b6f; /* Azul marinho */
+    color: white;
+}
+
+.sidebar a {
+    color: white;
+}
+
+.sidebar a.active {
+    background-color: #3b5998; /* Azul claro */
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #1b3b6f; /* Azul marinho */
+    color: white;
+}
+
+.card-body {
+    background-color: #f0f4f8; /* Azul claro */
+}
