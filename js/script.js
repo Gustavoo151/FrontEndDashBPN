@@ -48,15 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Carrega dados da seção 'Por Cidade' usando o valor do campo de busca por cidade
                     const data = await fetchFakeData(section, citySearchValue);
                     // Atualiza o campo 'Total de Exemplos' com o valor de 'd'
+                    const cidade  = document.getElementById('cidade');
                     const totalExemplosField = document.getElementById('total-exemplos');
                     const comBaixoPeso = document.getElementById('com-baixo-peso');
                     const semBaixoPeso = document.getElementById('sem-baixo-peso');
-                    const riscoDeBaixoPeso  = document.getElementById('risco-baixo-peso');
 
+                    cidade.textContent = data[0].nomeCidade;
                     totalExemplosField.textContent = data[0].d;
                     comBaixoPeso.textContent = data[0].dp;
                     semBaixoPeso.textContent = data[0].dn;
-                    riscoDeBaixoPeso.textContent =  (data[0].lift  * 100).toFixed(2) + '%';
+                    // riscoDeBaixoPeso.textContent =  (data[0].lift  * 100).toFixed(2) + '%';
+
+
 
                     displayData(data);
                 } else {
@@ -157,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             data.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${item.nomeCidade}</td>
+<!--                    <td>${item.nomeCidade}</td>-->
                     <td>${item.descr}</td>
                     <td>${item.tp}</td>
                     <td>${item.fp}</td>

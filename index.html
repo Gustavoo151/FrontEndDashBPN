@@ -68,7 +68,16 @@
         <!-- Conteúdo Principal -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <div class="row mt-4">
-                <!-- Campos de dados principais -->
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Cidade</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 id="cidade">0</h4>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-3">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
@@ -82,16 +91,6 @@
                 <div class="col-md-3">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h5 class="my-0 font-weight-normal">Com Baixo Peso</h5>
-                        </div>
-                        <div class="card-body">
-                            <h4 id="com-baixo-peso">0</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header">
                             <h5 class="my-0 font-weight-normal">Sem Baixo Peso</h5>
                         </div>
                         <div class="card-body">
@@ -99,23 +98,25 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-3">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h5 class="my-0 font-weight-normal">Risco de Baixo Peso</h5>
+                            <h5 class="my-0 font-weight-normal">Com Baixo Peso</h5>
                         </div>
                         <div class="card-body">
-                            <h4 id="risco-baixo-peso">0</h4>
+                            <h4 id="com-baixo-peso">0</h4>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="row">
                 <!-- Tabela de Subgrupos -->
                 <div class="col-md-12">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Subgrupos</h4>
+                            <h4 class="my-0 font-weight-normal">Análise dos Subgrupos</h4>
                         </div>
                         <div class="card-body">
                             <!-- Campo de busca por cidade -->
@@ -131,7 +132,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Cidade</th>
+<!--                                    <th scope="col">Cidade</th>-->
                                     <th scope="col">Descrição dos Subgrupos</th>
                                     <th scope="col">Com Baixo Peso</th>
                                     <th scope="col">Sem Baixo Peso</th>
