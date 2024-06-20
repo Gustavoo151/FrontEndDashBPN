@@ -61,3 +61,8 @@ table thead th {
     border-color: white;
 
 }
+
+.nav-link.active {
+    background-color: #085eaf; /* Altere para a cor de fundo desejada */
+    color: white; /* Altere para a cor de texto desejada */
+}

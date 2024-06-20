@@ -98,9 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 buscaDadosGrupoDeCaracteristicas(section);
             }
             else if (section === 'Mães Adolescentes') {
-
                 buscaDadosGrupoDeCaracteristicas(section);
             }
+
             else {
                 // Esconde o campo de busca por cidade
                 hideCitySearch();
@@ -221,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var dp = data[0].dp;
         var dn = data[0].d - data[0].dp;
 
+        createBarChartRelative(d, dp, dn);
         createBarChart(d, dp, dn);
 
         totalExemplosField.textContent = d;
@@ -232,6 +233,79 @@ document.addEventListener('DOMContentLoaded', function() {
         displayData(data);
     }
 
+    var barChartRelative = null;
+
+    async function createBarChartRelative(d, dp, dn) {
+
+        const ctx = document.getElementById('barChartRelative').getContext('2d');
+
+        var dpGeral = 380321;
+        var dnGeral = 4861894;
+        var dGeral = dpGeral + dnGeral;
+
+        // Calcula os percentuais
+        const dpPercent = (dp / d) * 100;
+        const dnPercent = (dn / d) * 100;
+
+        const dpGeralPercent = (dpGeral / dGeral) * 100;
+        const dnGeralPercent = (dnGeral / dGeral) * 100;
+
+        // Destroi o gráfico existente, se houver
+        if (barChartRelative) {
+            barChartRelative.destroy();
+            barChartRelative = null;
+        }
+
+        barChartRelative = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Com baixo Peso', 'Com baixo Peso (Geral)', 'Sem Baixo Peso', 'Sem Baixo Peso (Geral)'],
+                datasets: [{
+                    label: 'Percentual',
+                    data: [dpPercent, dpGeralPercent, dnPercent,  dnGeralPercent],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Seu título aqui',  // Substitua 'Seu título aqui' pelo título desejado
+                    fontSize: 20
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            // Inclui o símbolo de porcentagem nos rótulos das marcas
+                            callback: function (value, index, values) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                tooltips: {
+                    callbacks: {
+                        // Inclui o símbolo de porcentagem nas dicas de ferramentas
+                        label: function (tooltipItem, data) {
+                            return data.datasets[tooltipItem.datasetIndex].label + ': ' + tooltipItem.yLabel + '%';
+                        }
+                    }
+                }
+            }
+        });
+    }
     // Variável global para armazenar a instância do gráfico
     let myChart = null;
 
@@ -251,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
             data: {
                 labels: ['Total', 'Com baixo Peso', 'Sem Baixo Peso'],
                 datasets: [{
-                    label: 'Valores',
+                    label: 'Valores Absolutos',
                     data: [d, dp, dn],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
