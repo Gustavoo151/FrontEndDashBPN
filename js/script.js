@@ -59,7 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     semBaixoPeso.textContent = data[0].dn;
                     // riscoDeBaixoPeso.textContent =  (data[0].lift  * 100).toFixed(2) + '%';
 
+                    // Cria o gráfico de barras
+                    createBarChart(data[0].d, data[0].dp, data[0].dn);
 
+                    cidade.textContent = data[0].nomeCidade;
+                    totalExemplosField.textContent = data[0].d;
+                    comBaixoPeso.textContent = data[0].dp;
+                    semBaixoPeso.textContent = data[0].dn;
 
                     displayData(data);
                 } else {
@@ -177,5 +183,38 @@ document.addEventListener('DOMContentLoaded', function() {
             row.innerHTML = `<td colspan="10">Nenhum resultado encontrado.</td>`;
             subgruposBody.appendChild(row);
         }
+    }
+
+
+    function createBarChart(d, dp, dn) {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['D', 'Dp', 'Dn'],
+                datasets: [{
+                    label: 'Valores',
+                    data: [d, dp, dn],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
     }
 });

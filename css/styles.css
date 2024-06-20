@@ -17,14 +17,17 @@ body {
 table thead th {
     background-color: #001642;
     color: white;
+    font-size: 17px;
+    text-align: center;
+
 }
 
 
 .card {
     border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(105, 105, 105, 0.1);
-
+    box-shadow: 0 2px 4px rgba(173, 173, 173, 0.1);
+    font-size: 14px;
 }
 
 .card-body {
@@ -41,4 +44,20 @@ table thead th {
     color: #001642;
     background-color: white;
     border-color: #001642;
+}
+
+.titulo {
+    color: #073b98;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.table, .table th, .table td {
+    border-color: white;
+
 }

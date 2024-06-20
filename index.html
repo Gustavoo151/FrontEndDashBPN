@@ -6,6 +6,7 @@
     <title>Baixo Peso Ao Nascer</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 
 </head>
@@ -15,6 +16,8 @@
         <!-- Barra de Seleção Lateral -->
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
             <div class="sidebar-sticky">
+                <h1 class="titulo">Baixo Peso ao Nascer (BPN)</h1>
+
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
@@ -146,6 +149,14 @@
                                 <!-- Aqui serão inseridos os dados da API -->
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                    <!-- Gráfico de Barras -->
+                    <div class="col-md-6">
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-body">
+                                <canvas id="myChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
