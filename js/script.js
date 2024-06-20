@@ -89,12 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 buscaDadosGrupoDeCaracteristicas(section);
             }
             else if (section === 'Mães Adolescentes') {
+
                 buscaDadosGrupoDeCaracteristicas(section);
             }
             else {
                 // Esconde o campo de busca por cidade
                 hideCitySearch();
-
                 // Carrega dados de outras seções (simulado com exemplo)
                 const fakeData = await fetchFakeData(section);
                 displayData(fakeData);
@@ -196,6 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Limpa o conteúdo da seção de subgrupos
         // const subgruposBody = document.getElementById('subgrupos-body');
         // subgruposBody.innerHTML = '';
+
+        // Esconde o campo de busca por cidade
+        hideCitySearch();
 
         // Carrega dados da seção selecionada
         const data = await fetchFakeData(section);  // o await faz com que a função espere a resposta da API
