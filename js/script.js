@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para carregar dados da API de acordo com a seção selecionada
     async function loadSectionData(section) {
         try {
+            console.log(section)
             // Limpa o conteúdo da seção de subgrupos
             const subgruposBody = document.getElementById('subgrupos-body');
             subgruposBody.innerHTML = '';
@@ -59,14 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     semBaixoPeso.textContent = data[0].dn;
                     // riscoDeBaixoPeso.textContent =  (data[0].lift  * 100).toFixed(2) + '%';
 
-                    // Cria o gráfico de barras
+
                     createBarChart(data[0].d, data[0].dp, data[0].dn);
-
-                    cidade.textContent = data[0].nomeCidade;
-                    totalExemplosField.textContent = data[0].d;
-                    comBaixoPeso.textContent = data[0].dp;
-                    semBaixoPeso.textContent = data[0].dn;
-
                     displayData(data);
                 } else {
                     // Caso não haja valor digitado, exibe uma mensagem
@@ -74,7 +69,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     row.innerHTML = `<td colspan="10">Digite uma cidade para buscar.</td>`;
                     subgruposBody.appendChild(row);
                 }
-            } else {
+            }
+            else if (section === 'Geral') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else if (section === 'Cidades Pequenas') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else if (section === 'Rural') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else if (section === 'Indígenas') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else if (section === 'Quilombolas') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else if (section === 'Mães Baixa Escolaridade') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else if (section === 'Mães Adolescentes') {
+                buscaDadosGrupoDeCaracteristicas(section);
+            }
+            else {
                 // Esconde o campo de busca por cidade
                 hideCitySearch();
 
@@ -108,50 +125,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // Simula uma consulta à API baseada na seção selecionada
         switch (section) {
             case 'Geral':
-                return [
-                    { Base: 'Subgrupo A', quantidade: 100, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo B', quantidade: 150, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
-            case '10k':
-                return [
-                    { Base: 'Subgrupo C', quantidade: 80, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo D', quantidade: 120, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
+                const urlGeral = `https://baixopeso.onrender.com/api/subgroups/by-base/GERAL`;
+                return  await (await fetch(urlGeral)).json();
+
+            case 'Cidades Pequenas':
+                const url10k = `https://baixopeso.onrender.com/api/subgroups/by-base/10K`;
+                return  await (await fetch(url10k)).json();
+
             case 'Rural':
-                return [
-                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
+                const urlRural = `https://baixopeso.onrender.com/api/subgroups/by-base/RURAL`;
+                return  await (await fetch(urlRural)).json();
+
             case 'Indígenas':
-                return [
-                    { Base: 'Subgrupo H', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo W', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
+                const urlIndigenas = `https://baixopeso.onrender.com/api/subgroups/by-base/INDIGENA`;
+                return  await (await fetch(urlIndigenas)).json();
+
             case 'Quilombolas':
-                return [
-                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
-            case 'Mães Analfabetas':
-                return [
-                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
-            case 'Menores que 15 Anos':
-                return [
-                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
-            case 'Bolsa Família':
-                return [
-                    { Base: 'Subgrupo E', quantidade: 50, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 },
-                    { Base: 'Subgrupo F', quantidade: 70, TP: 1, FP: 2, lift: 3, supp: 4, supp_p: 5, conf: 6, D: 7, Dp: 8 }
-                ];
+                const urlQuilombola = `https://baixopeso.onrender.com/api/subgroups/by-base/QUILOMBOLA`;
+                return  await (await fetch(urlQuilombola)).json();
+
+            case 'Mães Baixa Escolaridade':
+                const urlMAEANALFABETA = `https://baixopeso.onrender.com/api/subgroups/by-base/MAEANALFABETA`;
+                return  await (await fetch(urlMAEANALFABETA)).json();
+
+            case 'Mães Adolescentes':
+                const urlMENOR15 = `https://baixopeso.onrender.com/api/subgroups/by-base/MENOR15`;
+                return  await (await fetch(urlMENOR15)).json();
+
+            // case 'Bolsa Família':
+            //     const urlBOLSAF = `https://baixopeso.onrender.com/api/subgroups/by-base/BOLSAF`;
+            //     return  await (await fetch(urlBOLSAF)).json();
+
             case 'Por Cidade':
                 const url = `https://baixopeso.onrender.com/api/subgroups/by-nome-cidade/${encodeURIComponent(citySearchValue)}`;
-                const response = await fetch(url);
-                const data = await response.json();
-                return data;
+                return  await (await fetch(url)).json();
             default:
                 return [];
         }
@@ -185,13 +192,52 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    async function buscaDadosGrupoDeCaracteristicas(section) {
+        // Limpa o conteúdo da seção de subgrupos
+        // const subgruposBody = document.getElementById('subgrupos-body');
+        // subgruposBody.innerHTML = '';
+
+        // Carrega dados da seção selecionada
+        const data = await fetchFakeData(section);  // o await faz com que a função espere a resposta da API
+
+        // Atualiza os campos com os dados obtidos
+        const totalExemplosField = document.getElementById('total-exemplos');
+        const comBaixoPeso = document.getElementById('com-baixo-peso');
+        const semBaixoPeso = document.getElementById('sem-baixo-peso');
+
+        var d = data[0].d;
+        var dp = data[0].dp;
+        var dn = data[0].d - data[0].dp;
+
+        createBarChart(d, dp, dn);
+
+        totalExemplosField.textContent = d;
+        comBaixoPeso.textContent = dp;
+        semBaixoPeso.textContent = dn;
+
+        // Exibe os dados na tabela de subgrupos
+
+        displayData(data);
+    }
+
+    // Variável global para armazenar a instância do gráfico
+    let myChart = null;
 
     function createBarChart(d, dp, dn) {
+
         const ctx = document.getElementById('myChart').getContext('2d');
-        new Chart(ctx, {
+
+        // Destroi o gráfico existente, se houver
+        if (myChart) {
+            myChart.destroy();
+            myChart = null;
+        }
+
+
+        myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['D', 'Dp', 'Dn'],
+                labels: ['Total', 'Com baixo Peso', 'Sem Baixo Peso'],
                 datasets: [{
                     label: 'Valores',
                     data: [d, dp, dn],
