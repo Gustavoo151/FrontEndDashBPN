@@ -22,6 +22,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Adiciona a classe 'active' ao link clicado
             this.classList.add('active');
 
+            // Se a seção selecionada for diferente de 'Por Cidade', altera o texto do campo 'Cidade' para 'Base'
+            // e atualiza o valor para o nome da seção selecionada
+            if (section !== 'Por Cidade') {
+                const baseField = document.getElementById('cidade');
+                const baseTitle = document.querySelector('.card-header h5');
+                baseField.textContent = section;
+                baseTitle.textContent = 'Base';
+            }
+
             // Função para carregar dados da API de acordo com a seção selecionada
             loadSectionData(section);
         });
