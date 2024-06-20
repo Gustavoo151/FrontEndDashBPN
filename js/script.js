@@ -171,8 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${item.tp}</td>
                     <td>${item.fp}</td>
                     <td>${(item.lift * 100).toFixed(2) + '%'}</td>
-                    <td>${item.supp}</td>
-                    <td>${item.sup_p}</td>
+<!--                    <td>${item.supp}</td>-->
+<!--                    <td>${item.sup_p}</td>-->
 <!--                    <td>${item.conf}</td>-->
 
                 `;

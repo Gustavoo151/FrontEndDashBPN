@@ -7,8 +7,6 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
 <div class="container-fluid">
@@ -17,52 +15,33 @@
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
             <div class="sidebar-sticky">
                 <h1 class="titulo">Baixo Peso ao Nascer (BPN)</h1>
-
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            Geral
-                        </a>
+                        <a class="nav-link active" href="#">Geral</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            10k
-                        </a>
+                        <a class="nav-link" href="#">10k</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Rural
-                        </a>
+                        <a class="nav-link" href="#">Rural</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Indígenas
-                        </a>
+                        <a class="nav-link" href="#">Indígenas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Quilombolas
-                        </a>
+                        <a class="nav-link" href="#">Quilombolas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Mães Analfabetas
-                        </a>
+                        <a class="nav-link" href="#">Mães Analfabetas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Menores que 15 Anos
-                        </a>
+                        <a class="nav-link" href="#">Menores que 15 Anos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Bolsa Família
-                        </a>
+                        <a class="nav-link" href="#">Bolsa Família</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Por Cidade
-                        </a>
+                        <a class="nav-link" href="#">Por Cidade</a>
                     </li>
                 </ul>
             </div>
@@ -101,7 +80,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-3">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
@@ -112,11 +90,11 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
             <div class="row">
                 <!-- Tabela de Subgrupos -->
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
                             <h4 class="my-0 font-weight-normal">Análise dos Subgrupos</h4>
@@ -135,14 +113,12 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-<!--                                    <th scope="col">Cidade</th>-->
                                     <th scope="col">Descrição dos Subgrupos</th>
                                     <th scope="col">Com Baixo Peso</th>
                                     <th scope="col">Sem Baixo Peso</th>
                                     <th scope="col">Risco de Baixo Peso</th>
-                                    <th scope="col">supp</th>
-                                    <th scope="col">sup_p</th>
-<!--                                    <th scope="col">conf</th>-->
+<!--                                    <th scope="col">supp</th>-->
+<!--                                    <th scope="col">sup_p</th>-->
                                 </tr>
                                 </thead>
                                 <tbody id="subgrupos-body">
@@ -151,12 +127,16 @@
                             </table>
                         </div>
                     </div>
-                    <!-- Gráfico de Barras -->
-                    <div class="col-md-6">
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-body">
-                                <canvas id="myChart"></canvas>
-                            </div>
+                </div>
+
+                <!-- Gráfico de Barras -->
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Crianças nascidas</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart"></canvas>
                         </div>
                     </div>
                 </div>
