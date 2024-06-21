@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para carregar dados da API de acordo com a seção selecionada
     async function loadSectionData(section) {
         try {
+            document.getElementById('spinner').style.display = 'block';
             // Limpa o conteúdo da seção de subgrupos
             const subgruposBody = document.getElementById('subgrupos-body');
             subgruposBody.innerHTML = '';
@@ -111,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const fakeData = await fetchFakeData(section);
                 displayData(fakeData);
             }
+            document.getElementById('spinner').style.display = 'none';
         } catch (error) {
             console.error('Erro ao carregar dados da seção:', error);
         }
