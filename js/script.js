@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    alert('Pode demorar até 60 segundos para o servidor iniciar. Após isso, o site funcionará normalmente.');
     const sidebarLinks = document.querySelectorAll('.nav-link');
+
+    // Carrega os dados do "Geral" por padrão
+    buscaDadosGrupoDeCaracteristicas('Geral');
 
     // Obtém uma referência ao botão de busca
     const searchButton = document.getElementById('btnSearch');
@@ -41,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para carregar dados da API de acordo com a seção selecionada
     async function loadSectionData(section) {
         try {
-            console.log(section)
             // Limpa o conteúdo da seção de subgrupos
             const subgruposBody = document.getElementById('subgrupos-body');
             subgruposBody.innerHTML = '';
@@ -69,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     semBaixoPeso.textContent = data[0].dn;
                     // riscoDeBaixoPeso.textContent =  (data[0].lift  * 100).toFixed(2) + '%';
 
-
+                    createBarChartRelative(data[0].d, data[0].dp, data[0].dn);
                     createBarChart(data[0].d, data[0].dp, data[0].dn);
                     displayData(data);
                 } else {
