@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Se a seção selecionada for diferente de 'Por Cidade', altera o texto do campo 'Cidade' para 'Base'
             // e atualiza o valor para o nome da seção selecionada
             if (section !== 'Por Cidade') {
+                document.getElementById('spinner').style.display = 'none';
                 const baseField = document.getElementById('cidade');
                 const baseTitle = document.querySelector('.card-header h5');
                 baseField.textContent = section;
@@ -191,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${item.descr}</td>
                     <td>${item.tp}</td>
                     <td>${item.fp}</td>
-                    <td>${(item.lift * 100).toFixed(2) + '%'}</td>
+                    <td>${((item.lift * 100).toFixed(2)) - 1 + '%'}</td>
 <!--                    <td>${item.supp}</td>-->
 <!--                    <td>${item.sup_p}</td>-->
 <!--                    <td>${item.conf}</td>-->
