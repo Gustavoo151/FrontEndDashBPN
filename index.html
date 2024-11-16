@@ -11,16 +11,7 @@
 </head>
 
 <style>
-    .loader {
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #3498db;
-        width: 120px;
-        height: 120px;
-        -webkit-animation: spin 2s linear infinite; /* Safari */
-        animation: spin 2s linear infinite;
-    }
-
+    
     /* Safari */
     @-webkit-keyframes spin {
         0% { -webkit-transform: rotate(0deg); }
@@ -35,13 +26,19 @@
 
 
 <body>
+
+
 <div class="container-fluid">
     <div class="row">
         <!-- Barra de Seleção Lateral -->
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
             <div class="sidebar-sticky">
-                <h1 class="titulo">Baixo Peso ao Nascer (BPN)</h1>
+                <!-- <h1 class="titulo" id="titulo-bpn">Baixo Peso ao Nascer (PBN)</h1> -->
+                <h1 class="titulo" id="titulo-bpn"></h1>
                 <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <button class="tipobase">Base: Baixo Peso</button>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Geral</a>
                     </li>

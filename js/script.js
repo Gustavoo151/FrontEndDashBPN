@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Carrega os dados do "Geral" por padrão
     buscaDadosGrupoDeCaracteristicas('Geral');
 
+    const tituloBPN = document.getElementById('titulo-bpn'); // Adicionado
+
+    buscaDadosGrupoDeCaracteristicas('Geral');
+
     // Obtém uma referência ao botão de busca
     const searchButton = document.getElementById('btnSearch');
 
@@ -13,6 +17,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // Executa a busca quando o botão de busca é clicado
         loadSectionData('Por Cidade');
     });
+
+
+    // Adiciona o evento de clique ao título para alternar entre BPN, Malformação, APGAR e Prematuridade
+    tituloBPN.addEventListener('click', function() {
+        const currentText = tituloBPN.textContent.trim();
+        switch(currentText) {
+            case 'Baixo Peso ao Nascer (BPN)':
+                tituloBPN.textContent = 'Malformação';
+                buscaDadosGrupoDeCaracteristicas('Malformação');
+                break;
+            // case 'Malformação':
+            //     tituloBPN.textContent = 'APGAR';
+            //     buscaDadosGrupoDeCaracteristicas('APGAR');
+            //     break;
+            // case 'APGAR':
+            //     tituloBPN.textContent = 'Prematuridade';
+            //     buscaDadosGrupoDeCaracteristicas('Prematuridade');
+            //     break;
+            default:
+                tituloBPN.textContent = 'Baixo Peso ao Nascer (BPN)';
+                buscaDadosGrupoDeCaracteristicas('Geral');
+        }
+    });
+
 
     // Itera sobre os links da barra lateral para adicionar os eventos
     sidebarLinks.forEach(link => {
@@ -60,8 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Verifica se foi digitado algo no campo de busca
                 if (citySearchValue) {
-                    // Carrega dados da seção 'Por Cidade' usando o valor do campo de busca por cidade
-                    const data = await fetchFakeData(section, citySearchValue);
+                    // Obtém os valores de APGAR e prematuridade
+                    const apgarValue = document.getElementById('apgar-input').value;
+                    const prematuridadeValue = document.getElementById('prematuridade-input').value;
+
+                    // Carrega dados da seção 'Por Cidade' usando o valor do campo de busca por cidade, APGAR e prematuridade
+                    const data = await fetchFakeData(section, citySearchValue, apgarValue, prematuridadeValue);
                     // Atualiza o campo 'Total de Exemplos' com o valor de 'd'
                     const cidade  = document.getElementById('cidade');
                     const totalExemplosField = document.getElementById('total-exemplos');
@@ -135,8 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Simulação de busca de dados da API
-    async function fetchFakeData(section, citySearchValue) {
+    async function fetchFakeData(section, citySearchValue, apgarValue, prematuridadeValue) {
         // Simula uma consulta à API baseada na seção selecionada
         switch (section) {
             case 'Geral':
