@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adiciona um ouvinte de evento de clique ao botão de busca
     searchButton.addEventListener('click', function() {
-        // Executa a busca quando o botão de busca é clicado
+        // Executa a busca quando o botão de busca é clicad
         loadSectionData('Por Cidade');
     });
 
