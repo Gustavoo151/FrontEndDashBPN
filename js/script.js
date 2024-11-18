@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    alert('Pode demorar até 120 segundos para o servidor iniciar. Após isso, o site funcionará normalmente.');
+    // alert('Pode demorar até 120 segundos para o servidor iniciar. Após isso, o site funcionará normalmente.');
     const sidebarLinks = document.querySelectorAll('.nav-link');
 
     // Carrega os dados do "Geral" por padrão
