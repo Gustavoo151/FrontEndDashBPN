@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Cabeçalho existente -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baixo Peso Ao Nascer</title>
@@ -12,7 +11,6 @@
 </head>
 
 <style>
-    /* Estilos existentes */
     .loader {
         border: 16px solid #f3f3f3;
         border-radius: 50%;
@@ -35,6 +33,7 @@
     }
 </style>
 
+
 <body>
 <div class="container-fluid">
     <div class="row">
@@ -43,7 +42,6 @@
             <div class="sidebar-sticky">
                 <h1 class="titulo">Baixo Peso ao Nascer (BPN)</h1>
                 <ul class="nav flex-column">
-                    <!-- Itens de navegação existentes -->
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Geral</a>
                     </li>
@@ -65,9 +63,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Mães Adolescentes</a>
                     </li>
-    <!--                <li class="nav-item">-->
-    <!--                    <a class="nav-link" href="#">Bolsa Família</a>-->
-    <!--                </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">Bolsa Família</a>-->
+<!--                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link" href="#">Por Cidade</a>
                     </li>
@@ -77,9 +75,7 @@
 
         <!-- Conteúdo Principal -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <!-- Conteúdo existente -->
             <div class="row mt-4">
-                <!-- Seus cartões e gráficos existentes -->
                 <div class="col-md-3">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
@@ -90,42 +86,98 @@
                         </div>
                     </div>
                 </div>
-                <!-- Outras colunas e conteúdo -->
-            </div>
-
-            <!-- Sua seção existente -->
-            <div class="row">
-                <!-- Tabela de Subgrupos -->
-                <div class="col-md-6">
-                    <!-- Conteúdo existente -->
-                </div>
-
-                <!-- Gráfico de Barras -->
-                <div class="col-md-6">
-                    <!-- Conteúdo existente -->
-                </div>
-            </div>
-
-            <!-- Seção de Contato adicionada -->
-            <div class="row mt-5">
-                <div class="col-12">
+                <div class="col-md-3">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">Contato</h4>
+                            <h5 class="my-0 font-weight-normal">Total de Crianças</h5>
                         </div>
                         <div class="card-body">
-                            <p>Para mais informações ou dúvidas, entre em contato pelo email:</p>
-                            <p><a href="mailto:gusavo@.com">gusavo@.com</a></p>
+                            <h4 id="total-exemplos">0</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Sem Baixo Peso</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 id="sem-baixo-peso">0</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h5 class="my-0 font-weight-normal">Com Baixo Peso</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 id="com-baixo-peso">0</h4>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div id="spinner" style="display: none;">
+                <div class="loader"></div>
+            </div>
+
+            <div class="row">
+                <!-- Tabela de Subgrupos -->
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Análise dos Subgrupos</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Campo de busca por cidade -->
+                            <div id="city-search" style="display: none;">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="city-search-input" class="form-control" placeholder="Buscar por cidade. Ex: Recife (PE)">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-primary" type="button" id="btnSearch">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tabela de subgrupos -->
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Descrição dos Subgrupos</th>
+                                    <th scope="col">Com Baixo Peso</th>
+                                    <th scope="col">Sem Baixo Peso</th>
+                                    <th scope="col">Aumento taxa PBN</th>
+<!--                                    <th scope="col">supp</th>-->
+<!--                                    <th scope="col">sup_p</th>-->
+                                </tr>
+                                </thead>
+                                <tbody id="subgrupos-body">
+                                <!-- Aqui serão inseridos os dados da API -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Barras -->
+                <div class="col-md-6">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Crianças nascidas</h4>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="barChartRelative"></canvas>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </div>
 
-<!-- Scripts existentes -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/script.js"></script>
 </body>
