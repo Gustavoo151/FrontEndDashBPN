@@ -225,55 +225,55 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  async function fetchFakeData(
-    section,
-    citySearchValue,
-    apgarValue,
-    prematuridadeValue
-  ) {
-    // Simula uma consulta à API baseada na seção selecionada
+  async function fetchData(section, citySearchValue, apgarValue, prematuridadeValue) {
+    const baseURL = "https://baixopeso.onrender.com/api/subgroups";
+
     switch (section) {
-      case "Geral":
-        const urlGeral = `https://baixopeso.onrender.com/api/subgroups/by-base/GERAL`;
-        return await (await fetch(urlGeral)).json();
+        case "Geral":
+            const urlGeral = `${baseURL}/by-base/GERAL`;
+            return await (await fetch(urlGeral)).json();
 
-      case "Cidades Pequenas":
-        const url10k = `https://baixopeso.onrender.com/api/subgroups/by-base/10K`;
-        return await (await fetch(url10k)).json();
+        case "Cidades Pequenas":
+            const url10k = `${baseURL}/by-base/10K`;
+            return await (await fetch(url10k)).json();
 
-      case "Rural":
-        const urlRural = `https://baixopeso.onrender.com/api/subgroups/by-base/RURAL`;
-        return await (await fetch(urlRural)).json();
+        case "Rural":
+            const urlRural = `${baseURL}/by-base/RURAL`;
+            return await (await fetch(urlRural)).json();
 
-      case "Indígenas":
-        const urlIndigenas = `https://baixopeso.onrender.com/api/subgroups/by-base/INDIGENA`;
-        return await (await fetch(urlIndigenas)).json();
+        case "Indígenas":
+            const urlIndigenas = `${baseURL}/by-base/INDIGENA`;
+            return await (await fetch(urlIndigenas)).json();
 
-      case "Quilombolas":
-        const urlQuilombola = `https://baixopeso.onrender.com/api/subgroups/by-base/QUILOMBOLA`;
-        return await (await fetch(urlQuilombola)).json();
+        case "Quilombolas":
+            const urlQuilombola = `${baseURL}/by-base/QUILOMBOLA`;
+            return await (await fetch(urlQuilombola)).json();
 
-      case "Mães Baixa Escolaridade":
-        const urlMAEANALFABETA = `https://baixopeso.onrender.com/api/subgroups/by-base/MAEANALFABETA`;
-        return await (await fetch(urlMAEANALFABETA)).json();
+        case "Mães Baixa Escolaridade":
+            const urlMAEANALFABETA = `${baseURL}/by-base/MAEANALFABETA`;
+            return await (await fetch(urlMAEANALFABETA)).json();
 
-      case "Mães Adolescentes":
-        const urlMENOR15 = `https://baixopeso.onrender.com/api/subgroups/by-base/MENOR15`;
-        return await (await fetch(urlMENOR15)).json();
+        case "Mães Adolescentes":
+            const urlMENOR15 = `${baseURL}/by-base/MENOR15`;
+            return await (await fetch(urlMENOR15)).json();
 
-      // case 'Bolsa Família':
-      //     const urlBOLSAF = `https://baixopeso.onrender.com/api/subgroups/by-base/BOLSAF`;
-      //     return  await (await fetch(urlBOLSAF)).json();
+        case "Malformação":
+            const urlMalformacao = `${baseURL}/by-base/malformacaoanalfabeta`;
+            return await (await fetch(urlMalformacao)).json();
 
-      case "Por Cidade":
-        const url = `https://baixopeso.onrender.com/api/subgroups/by-nome-cidade/${encodeURIComponent(
-          citySearchValue
-        )}`;
-        return await (await fetch(url)).json();
-      default:
-        return [];
+        case "Por Cidade":
+            if (!citySearchValue) {
+                console.error("Nome da cidade é necessário para a busca por cidade.");
+                return [];
+            }
+            const urlPorCidade = `${baseURL}/by-nome-cidade/${encodeURIComponent(citySearchValue)}`;
+            return await (await fetch(urlPorCidade)).json();
+
+        default:
+            console.warn("Seção não encontrada:", section);
+            return [];
     }
-  }
+}
 
   // Exibe os dados na tabela de subgrupos
   function displayData(data) {
